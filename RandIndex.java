@@ -28,11 +28,14 @@ public class RandIndex
          new RandomAccessFile ( indices, "r" );
       // Se situa en la posicion del indice
       index
-         .seek( pos * 8 ); // pos * bytes
+         .seek( pos ); // pos * bytes
+      System.out.println( "SEEK to " +pos );
+
       // Recupera el puntero del índice
       puntero = 
          index
          .readLong();
+      System.out.println( "indice en: " + puntero);
       // Cierra el archivo de indice
       index
          .close();
@@ -43,21 +46,31 @@ public class RandIndex
       // Posiciona el puntero en el inicio de la entrada
       objFile
          .seek( puntero );
+      System.out.println( "se coloca puntero" );
       // Recupera Idade como byte
       idade = 
          objFile
          .readByte();
+      System.out.println( "se lee edad" );
+
       // Recupera longitud del nombre
 
       // Recupera nome como UTF
       nome =
          objFile
          .readUTF();
+      System.out.println( "se lee nome" );
       // Recupera a altura como enteiro
       altura =
          objFile
          .readInt();
+      System.out.println( "se lee altura" );
       // Cierra el archivo de objetos
+     }
+     catch (IOException e)
+     {
+        System.out
+           .println( "Error: " + e.getMessage() );
      }
      catch (Exception e)
      {
@@ -114,10 +127,27 @@ public class RandIndex
     objFile
        .close();
 
+    /*
+     * Abre el archivo de indices para escritura
+     */
     index =
        new RandomAccessFile( indices, "rw" );
+    /*
+     * Pone el puntero al final del archivo
+     */
+    index
+       .seek(index
+             .length()
+             );
+    /*
+     * Escribe la posicion del registro de 
+     * los datos del objeto
+     */
     index
        .writeLong( ini );
+    /*
+     * Cierra el archivo
+     */
     index
        .close();
    }

@@ -12,6 +12,76 @@ public class Persona
       this.altura = altura;
    }
 
+   public Persona()
+   {
+      System.out
+         . print( "\n\n Nome: " );
+      this.nome = teclado.nextLine();
+      /*
+       * Pide la edad y fuerza a que sea byte
+       */
+      do
+      {
+         System.out
+            . print( "\n Idade: " );
+         try
+         {
+            // Captura String del teclado y lo intenta
+            // transformar a un objeto Byte
+            Byte bt = 
+               Byte
+               .parseByte( teclado
+                     .nextLine() );
+            
+            // Transforma el contenido del objeto Byte
+            // al tipo primitivo byte y lo asigna a edad            
+            this.idade =
+               Byte
+               .byteValue( bt );
+            
+            // Sale del bucle
+            break;
+         }
+         catch( Exception e )
+         {
+            System.out
+               .println( "Solo admite valores en el rango {-128, 127}" );
+         }
+      } while ( true )
+      
+      /*
+       * Pide la altura y fuerza a que sea int
+       */
+      do
+      {
+         System.out
+            .print( "\n Altura: " );
+         try
+         {
+            // Captura String del teclado y lo intenta
+            // transformar a un objeto Byte
+            Integer in = 
+               Integer
+               .parseInt( teclado
+                     .nextLine() );
+            
+            // Transforma el contenido del objeto Byte
+            // al tipo primitivo byte y lo asigna a edad            
+            this.altura =
+               Integer
+               .intValue( in );
+            
+            // Sale del bucle
+            break;
+         }
+         catch( Exception e )
+         {
+            System.out
+               .println( "Fuera de rango." );
+         }
+      } while ( true )
+   }
+
    public byte getIdade()
    {
       return this.idade;
