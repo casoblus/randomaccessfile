@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Persona
 {
@@ -14,6 +15,7 @@ public class Persona
 
    public Persona()
    {
+      Scanner teclado = new Scanner( System.in );
       System.out
          . print( "\n\n Nome: " );
       this.nome = teclado.nextLine();
@@ -36,8 +38,8 @@ public class Persona
             // Transforma el contenido del objeto Byte
             // al tipo primitivo byte y lo asigna a edad            
             this.idade =
-               Byte
-               .byteValue( bt );
+              bt 
+               .byteValue();
             
             // Sale del bucle
             break;
@@ -47,7 +49,7 @@ public class Persona
             System.out
                .println( "Solo admite valores en el rango {-128, 127}" );
          }
-      } while ( true )
+      } while ( true );
       
       /*
        * Pide la altura y fuerza a que sea int
@@ -68,8 +70,8 @@ public class Persona
             // Transforma el contenido del objeto Byte
             // al tipo primitivo byte y lo asigna a edad            
             this.altura =
-               Integer
-               .intValue( in );
+              in 
+               .intValue();
             
             // Sale del bucle
             break;
@@ -79,7 +81,7 @@ public class Persona
             System.out
                .println( "Fuera de rango." );
          }
-      } while ( true )
+      } while ( true );
    }
 
    public byte getIdade()
